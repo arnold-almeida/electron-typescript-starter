@@ -151,7 +151,7 @@
     "react-dom": "^16.13.0",
     "react-realm-context": "^0.3.0",
     "react-router-dom": "5.1.2",
-    "realm": "3.6.5",
+    "realm": "3.7.0-alpha.2",
     "redux-devtools-extension": "2.13.8"
   },
   "devDependencies": {
@@ -205,8 +205,5 @@
     "webpack-node-externals": "^1.7.2",
     "webpack-visualizer-plugin": "^0.1.11",
     "why-did-you-update": "^1.0.8"
-  },
-  "engines": {
-    "node": "^10"
   }
 }
