@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "moduleResolution": "node",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "allowJs": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noImplicitAny": true,
+    "downlevelIteration": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "reportFiles": [
+      "src/**/*.{ts,tsx}"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+build/
+dist/
+node_modules/
+realm-object-server/
+.idea
+
+.DS_Store
+data/
+
+# Created by mocha-webpack
+.tmp/
+
+# Secrets
+secrets.sh
+
+# Test results from JUnit and screenshots from failures
+test-results.xml
+failure-*.png
+spectron.log
+
+# Realm locks and management files
+*.realm.lock
+*.realm.management
+
+# Sentry cache folder
+.electron-symbols/

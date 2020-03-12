@@ -1,0 +1,26 @@
+@import "./variables";
+@import "./bootstrap";
+
+@import "./fonts/realm";
+
+// Applying https://www.mobomo.com/2014/05/better-font-smoothing-in-chrome-on-mac-os-x/
+html {
+  -webkit-font-smoothing: antialiased;
+  // Adding "overflow: hidden;" to prevent scrollbar flickering on Windows
+  // fixing https://github.com/realm/realm-studio/issues/599
+  overflow: hidden;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+.Link {
+  color: $primary;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@import "./form-controls";
