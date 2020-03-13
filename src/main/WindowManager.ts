@@ -97,7 +97,7 @@ export class WindowManager {
       ...defaultWindowOptions,
       ...savedWindowOptions,
       webPreferences: {
-        // fixes electron v5
+        // fixes electron v7
         nodeIntegration: true,
         // Load Sentry as a preload in production - this doesn't work in development because the
         // sentry.js is not emitted to the build folder.
