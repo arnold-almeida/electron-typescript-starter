@@ -97,6 +97,8 @@ export class WindowManager {
       ...defaultWindowOptions,
       ...savedWindowOptions,
       webPreferences: {
+        // fixes electron v5
+        nodeIntegration: true,
         // Load Sentry as a preload in production - this doesn't work in development because the
         // sentry.js is not emitted to the build folder.
         preload: isDevelopment
@@ -128,7 +130,7 @@ export class WindowManager {
     this.windows.push({
       window,
       type: options.type,
-      singletonKey,
+      singletonKey
     });
 
     // If the window should maximize - let's maximize it when it gets shown

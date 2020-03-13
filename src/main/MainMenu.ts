@@ -7,9 +7,7 @@ const enableTogglingInternalFeatures =
   process.env.REALM_STUDIO_INTERNAL_FEATURES === 'true'; // Show features only relevant for Realm employees
 
 
-export const getDefaultMenuTemplate = (
-  updateMenu: () => void
-): electron.MenuItemConstructorOptions[] => {
+export const getDefaultMenuTemplate = (updateMenu: () => void): electron.MenuItemConstructorOptions[] => {
   const showInternalFeatures = store.shouldShowInternalFeatures();
   const electronOrRemote = electron.remote || electron;
   const template: electron.MenuItemConstructorOptions[] = [
