@@ -1,21 +1,3 @@
-////////////////////////////////////////////////////////////////////////////
-//
-// Copyright 2018 Realm Inc.
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-////////////////////////////////////////////////////////////////////////////
-
 import electron from 'electron';
 import { autoUpdater, UpdateInfo } from 'electron-updater';
 
@@ -30,13 +12,13 @@ export interface IDownloadProgress {
 
 export interface IUpdateStatus {
   state:
-    | 'checking'
-    | 'failed'
-    | 'up-to-date'
-    | 'available'
-    | 'downloading'
-    | 'downloaded'
-    | 'installing';
+  | 'checking'
+  | 'failed'
+  | 'up-to-date'
+  | 'available'
+  | 'downloading'
+  | 'downloaded'
+  | 'installing';
   progress?: IDownloadProgress;
   error?: string;
   nextVersion?: string;
@@ -47,10 +29,10 @@ export class Updater {
   private quite = false;
   private listeningWindows: Electron.BrowserWindow[] = [];
   private nextVersion?: string;
-  private windowManager: WindowManager;
+  // private windowManager: WindowManager;
 
   constructor(windowManager: WindowManager) {
-    this.windowManager = windowManager;
+    // this.windowManager = windowManager;
 
     // Disabling auto download of updates
     autoUpdater.autoDownload = false;
@@ -186,62 +168,66 @@ export class Updater {
     }, 1000);
   }
 
-  private askToUpdate(lastestVersion: string) {
-    if (process.env.REALM_STUDIO_DISABLE_UPDATE_PROMPT) {
-      return true;
-    } else {
-      const appName = electron.app.getName();
-      const currentVersion = electron.app.getVersion();
-      return (
-        electron.dialog.showMessageBox({
-          type: 'info',
-          message: `A new version of ${appName} is available!`,
-          detail: `${appName} ${lastestVersion} is available – you have ${currentVersion}.\nWould you like to update it now?`,
-          buttons: ['Yes', 'No'],
-          defaultId: 0,
-          cancelId: 1,
-        }) === 0
-      );
-    }
-  }
+  // private askToUpdate(lastestVersion: string) {
+  //   console.log('TODO: askToUpdate(lastestVersion: string)')
+  //   // if (process.env.REALM_STUDIO_DISABLE_UPDATE_PROMPT) {
+  //   //   return true;
+  //   // } else {
+  //   //   const appName = electron.app.getName();
+  //   //   const currentVersion = electron.app.getVersion();
+  //   //   return (
+  //   //     electron.dialog.showMessageBox({
+  //   //       type: 'info',
+  //   //       message: `A new version of ${appName} is available!`,
+  //   //       detail: `${appName} ${lastestVersion} is available – you have ${currentVersion}.\nWould you like to update it now?`,
+  //   //       buttons: ['Yes', 'No'],
+  //   //       defaultId: 0,
+  //   //       cancelId: 1,
+  //   //     }) === 0
+  //   //   );
+  //   // }
+  // }
 
-  private askToRestart(lastestVersion: string) {
-    if (process.env.REALM_STUDIO_DISABLE_UPDATE_PROMPT) {
-      return true;
-    } else {
-      const appName = electron.app.getName();
-      return (
-        electron.dialog.showMessageBox({
-          type: 'info',
-          message: `A new version of ${appName} is downloaded!`,
-          detail: `${appName} ${lastestVersion} is downloaded.\nClick "Ok" to quit and restart Realm Studio.`,
-          buttons: ['Ok'],
-          defaultId: 0,
-        }) === 0
-      );
-    }
-  }
+  // private askToRestart(lastestVersion: string) {
+  //   console.log('askToRestart()')
+  //   // if (process.env.REALM_STUDIO_DISABLE_UPDATE_PROMPT) {
+  //   //   return true;
+  //   // } else {
+  //   //   const appName = electron.app.getName();
+  //   //   return (
+  //   //     electron.dialog.showMessageBox({
+  //   //       type: 'info',
+  //   //       message: `A new version of ${appName} is downloaded!`,
+  //   //       detail: `${appName} ${lastestVersion} is downloaded.\nClick "Ok" to quit and restart Realm Studio.`,
+  //   //       buttons: ['Ok'],
+  //   //       defaultId: 0,
+  //   //     }) === 0
+  //   //   );
+  //   // }
+  // }
 
   private onUpdateAvailable(info: UpdateInfo) {
-    // Show a dialog synchronously
-    const shouldDownload = this.askToUpdate(info.version);
-    // Quit and install
-    if (shouldDownload) {
-      autoUpdater.downloadUpdate();
-    } else {
-      this.isBusy = false;
-      // If the user rejects an update, we'll tell the window manager
-      this.windowManager.setPendingUpdate(true);
-    }
+    console.log('onUpdateAvailable()')
+    // // Show a dialog synchronously
+    // const shouldDownload = this.askToUpdate(info.version);
+    // // Quit and install
+    // if (shouldDownload) {
+    //   autoUpdater.downloadUpdate();
+    // } else {
+    //   this.isBusy = false;
+    //   // If the user rejects an update, we'll tell the window manager
+    //   this.windowManager.setPendingUpdate(true);
+    // }
   }
 
   private onUpdateDownloaded(info: UpdateInfo) {
-    // Show a dialog synchronously
-    const shouldQuitAndInstall = this.askToRestart(info.version);
-    // Quit and install
-    if (shouldQuitAndInstall) {
-      autoUpdater.quitAndInstall(true, true);
-    }
+    console.log('onUpdateDownloaded()')
+    // // Show a dialog synchronously
+    // const shouldQuitAndInstall = this.askToRestart(info.version);
+    // // Quit and install
+    // if (shouldQuitAndInstall) {
+    //   autoUpdater.quitAndInstall(true, true);
+    // }
   }
 
   private showError(message: string, detail: string = '') {
