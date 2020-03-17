@@ -1,31 +1,81 @@
 {
+  "defaultSeverity": "error",
   "extends": [
-    "tslint:latest",
+    "tslint:recommended",
     "tslint-react",
-    "tslint-eslint-rules",
     "tslint-config-prettier"
   ],
-  "rulesDirectory": [
-    "tslint-plugin-prettier"
-  ],
   "rules": {
-    "object-literal-sort-keys": false,
-    "jsx-boolean-value": false,
-    "jsx-no-lambda": false,
-    "no-submodule-imports": [
+    "curly": true,
+    "eofline": false,
+    "align": [
       true,
-      "realm-studio-styles"
+      "parameters"
     ],
-    "no-implicit-dependencies": [
+    "class-name": true,
+    "indent": [
       true,
-      "dev"
+      "spaces"
     ],
-    "prettier": [
+    "max-line-length": [
+      false
+    ],
+    "no-consecutive-blank-lines": [
+      true
+    ],
+    "no-trailing-whitespace": true,
+    "no-duplicate-variable": true,
+    "no-var-keyword": true,
+    "no-empty": true,
+    "no-unused-expression": true,
+    "no-var-requires": true,
+    "no-require-imports": true,
+    "one-line": [
+      true,
+      "check-else",
+      "check-whitespace",
+      "check-open-brace"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "variable-name": {
+      "options": [
+        "allow-leading-underscore",
+        "allow-pascal-case"
+      ]
+    },
+    "interface-name": false,
+    "no-empty-interface": false,
+    "typedef-whitespace": [
       true,
       {
-        "singleQuote": true,
-        "trailingComma": "all"
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
       }
-    ]
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "no-console": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "member-ordering": false,
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false
   }
 }
