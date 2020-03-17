@@ -1,15 +1,9 @@
-import electron from 'electron';
-
-// import { store } from '../store';
-
-// const enableTogglingInternalFeatures =
-//   process.env.NODE_ENV === 'development' ||
-//   process.env.REALM_STUDIO_INTERNAL_FEATURES === 'true'; // Show features only relevant for Realm employees
-
-
-export const getDefaultMenuTemplate = (updateMenu: () => void): electron.MenuItemConstructorOptions[] => {
+import electron from 'electron'
+export const getDefaultMenuTemplate = (
+  updateMenu: () => void
+): electron.MenuItemConstructorOptions[] => {
   // const showInternalFeatures = store.shouldShowInternalFeatures();
-  // const electronOrRemote = electron.remote || electron;
+  const electronOrRemote = electron.remote || electron
   const template: electron.MenuItemConstructorOptions[] = [
     {
       label: 'File',
@@ -166,51 +160,51 @@ export const getDefaultMenuTemplate = (updateMenu: () => void): electron.MenuIte
     //     },
     //   ],
     // },
-  ];
+  ]
 
-  // if (process.platform === 'darwin') {
-  //   template.unshift({
-  //     label: electronOrRemote.app.getName(),
-  //     submenu: [
-  //       { role: 'about' },
-  //       { type: 'separator' },
-  //       {
-  //         label: 'Check for Updates...',
-  //         click: () => {
-  //           console.log('notImplemented()')
-  //         },
-  //       },
-  //       { type: 'separator' },
-  //       { role: 'services', submenu: [] },
-  //       { type: 'separator' },
-  //       { role: 'hide' },
-  //       { role: 'hideothers' },
-  //       { role: 'unhide' },
-  //       { type: 'separator' },
-  //       { role: 'quit' },
-  //     ],
-  //   });
-  // }
+  if (process.platform === 'darwin') {
+    template.unshift({
+      label: electronOrRemote.app.getName(),
+      submenu: [
+        { role: 'about' },
+        { type: 'separator' },
+        {
+          label: 'Check for Updates...',
+          click: () => {
+            console.log('notImplemented()')
+          },
+        },
+        { type: 'separator' },
+        { role: 'services', submenu: [] },
+        { type: 'separator' },
+        { role: 'hide' },
+        { role: 'hideothers' },
+        { role: 'unhide' },
+        { type: 'separator' },
+        { role: 'quit' },
+      ],
+    })
+  }
 
   // Workaround for https://github.com/electron/electron/issues/8703
   // In some cases the setting for `visible` is not respected, instead
   // just manually remove all items marked invisible.
   for (let i = template.length - 1; i >= 0; i--) {
-    const menuItem: electron.MenuItemConstructorOptions = template[i];
+    const menuItem: electron.MenuItemConstructorOptions = template[i]
     if (menuItem.visible === false) {
-      template.splice(i, 1);
-      continue;
+      template.splice(i, 1)
+      continue
     }
     if (menuItem.submenu instanceof Array) {
       for (let j = menuItem.submenu.length - 1; j >= 0; j--) {
         const subMenuItem: electron.MenuItemConstructorOptions =
-          menuItem.submenu[j];
+          menuItem.submenu[j]
         if (subMenuItem.visible === false) {
-          menuItem.submenu.splice(j, 1);
+          menuItem.submenu.splice(j, 1)
         }
       }
     }
   }
 
-  return template;
-};
+  return template
+}
