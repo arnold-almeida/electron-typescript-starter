@@ -18,19 +18,19 @@
 
 // Ensure that the window / UI code is not bundled into the main bundle.
 if (process.type === 'browser') {
-  throw new Error('This module should not be imported from the main process');
+  throw new Error('This module should not be imported from the main process')
 }
 
-import { remote } from 'electron';
-import React from 'react';
+import { remote } from 'electron'
+import React from 'react'
 
 import {
   generateMenu,
   IMenuGenerator,
   IMenuGeneratorProps,
-} from './MenuGenerator';
-import { getWindowClass, InnerWindowComponent } from './Window';
-import { getWindowOptions } from './WindowOptions';
+} from './MenuGenerator'
+import { getWindowClass, InnerWindowComponent } from './Window'
+import { getWindowOptions } from './WindowOptions'
 
 // TODO: Consider if we can have the window not show before a connection has been established.
 
@@ -39,12 +39,12 @@ import { getWindowOptions } from './WindowOptions';
 //   [name: string]: string;
 // }
 
-export abstract class WindowComponent extends React.Component implements IMenuGeneratorProps {
-
-  protected menuGenerator?: IMenuGenerator;
-  protected options = getWindowOptions();
-  protected CurrentWindow = getWindowClass(this.options.type);
-  protected CurrentWindowComponent?: InnerWindowComponent;
+export abstract class WindowComponent extends React.Component
+  implements IMenuGeneratorProps {
+  protected menuGenerator?: IMenuGenerator
+  protected options = getWindowOptions()
+  protected CurrentWindow = getWindowClass(this.options.type)
+  protected CurrentWindowComponent?: InnerWindowComponent
 
   public componentDidMount() {
     // const trackedProperties: ITrackedProperties = {
@@ -57,16 +57,16 @@ export abstract class WindowComponent extends React.Component implements IMenuGe
     //   message: `Opened '${this.options.type}' window`,
     // });
     // Generate the menu whenever the window gets focus
-    window.addEventListener('focus', this.onFocussed);
+    window.addEventListener('focus', this.onFocussed)
 
     this.CurrentWindow.getComponent().then(CurrentWindowComponent => {
-      this.CurrentWindowComponent = CurrentWindowComponent;
-      this.forceUpdate();
-    });
+      this.CurrentWindowComponent = CurrentWindowComponent
+      this.forceUpdate()
+    })
   }
 
   public componentWillUnmount() {
-    window.removeEventListener('focus', this.onFocussed);
+    window.removeEventListener('focus', this.onFocussed)
   }
 
   public render() {
@@ -76,29 +76,29 @@ export abstract class WindowComponent extends React.Component implements IMenuGe
         updateMenu={this.updateMenu}
         ref={this.windowComponentRef}
       />
-    ) : null;
+    ) : null
   }
 
   public windowComponentRef = (element: any) => {
     if (element && typeof element.generateMenu === 'function') {
       // The window component has a method to generate a menu
-      this.menuGenerator = element;
+      this.menuGenerator = element
       // With the menuGenerator present - we can ask for the menu to be updated initially
-      this.updateMenu();
+      this.updateMenu()
     }
-  };
+  }
 
   public updateMenu = () => {
     // Let's only generate menus of windows that are focused
     if (remote.getCurrentWindow().isFocused()) {
       // Generate and set the application
-      const menu = generateMenu(this.menuGenerator, this.updateMenu);
-      remote.Menu.setApplicationMenu(menu);
+      const menu = generateMenu(this.menuGenerator, this.updateMenu)
+      remote.Menu.setApplicationMenu(menu)
     }
-  };
+  }
 
   private onFocussed = () => {
-    this.updateMenu();
+    this.updateMenu()
     // sentry.configureScope(scope => {
     //   scope.setTag('window-type', this.options.type);
     // });
@@ -106,9 +106,7 @@ export abstract class WindowComponent extends React.Component implements IMenuGe
     //   category: 'ui.window',
     //   message: `Focussed '${this.options.type}' window`,
     // });
-  };
+  }
 }
 
-export const renderCurrentWindow = () => (
-  <WindowComponent />
-);
+export const renderCurrentWindow = () => <WindowComponent />

@@ -3,22 +3,21 @@ import { MemoryRouter as Router } from 'react-router-dom'
 import React from 'react'
 // import Realm from 'realm'
 
-import { IUpdateStatus } from 'src/main/Updater';
-import { IMenuGeneratorProps as Props } from 'src/windows/MenuGenerator';
+import { IUpdateStatus } from 'src/main/Updater'
+import { IMenuGeneratorProps as Props } from 'src/windows/MenuGenerator'
 
 import { Button } from './Button'
-import { store } from '../redux';
-import { StoreProvider } from 'easy-peasy';
+import { store } from '../redux'
+import { StoreProvider } from 'easy-peasy'
 
 interface State {
-  isCloudInstancesDropdownOpen: boolean;
-  isSyncEnabled: boolean;
-  updateStatus: IUpdateStatus;
-  version: string;
+  isCloudInstancesDropdownOpen: boolean
+  isSyncEnabled: boolean
+  updateStatus: IUpdateStatus
+  version: string
 }
 
 export class Welcome extends React.Component<Props, State> {
-
   public state: State = {
     isCloudInstancesDropdownOpen: false,
     isSyncEnabled: false,
@@ -26,10 +25,9 @@ export class Welcome extends React.Component<Props, State> {
       state: 'up-to-date',
     },
     version: electron.remote.app.getVersion() || 'unknown',
-  };
+  }
 
   public componentDidMount() {
-
     electron.ipcRenderer.on('update-status', this.updateStatusChanged)
 
     // Require realm and check update state with the sync support
@@ -45,7 +43,10 @@ export class Welcome extends React.Component<Props, State> {
   }
 
   public componentWillUnmount() {
-    electron.ipcRenderer.removeListener('update-status', this.updateStatusChanged)
+    electron.ipcRenderer.removeListener(
+      'update-status',
+      this.updateStatusChanged
+    )
   }
 
   public updateStatusChanged() {
@@ -62,6 +63,6 @@ export class Welcome extends React.Component<Props, State> {
           </>
         </StoreProvider>
       </Router>
-    );
+    )
   }
 }

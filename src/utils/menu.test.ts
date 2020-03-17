@@ -16,11 +16,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-import assert from 'assert';
+import assert from 'assert'
 
-import { MenuItemConstructorOptions } from 'electron';
+import { MenuItemConstructorOptions } from 'electron'
 
-import * as menu from './menu';
+import * as menu from './menu'
 
 const before: MenuItemConstructorOptions[] = [
   { id: 'item-a', label: 'Item A' },
@@ -34,7 +34,7 @@ const before: MenuItemConstructorOptions[] = [
       { id: 'item-c-3', label: 'Item C 3' },
     ],
   },
-];
+]
 
 describe('menu utilities', () => {
   it('can replace', () => {
@@ -42,38 +42,38 @@ describe('menu utilities', () => {
       action: 'replace',
       id: 'item-b',
       items: [{ id: 'item-b-replaced', label: 'Item B Replaced' }],
-    });
-    assert.equal(before.length, 3);
-    assert.equal(after.length, 3);
-    assert.equal(after[1].id, 'item-b-replaced');
-    assert.equal(after[1].label, 'Item B Replaced');
-  });
+    })
+    assert.equal(before.length, 3)
+    assert.equal(after.length, 3)
+    assert.equal(after[1].id, 'item-b-replaced')
+    assert.equal(after[1].label, 'Item B Replaced')
+  })
 
   it('can append', () => {
     const after = menu.performModification(before, {
       action: 'append',
       id: 'item-b',
       items: [{ id: 'item-after-b', label: 'Item After B' }],
-    });
-    assert.equal(before.length, 3);
-    assert.equal(after.length, 4);
-    assert.equal(after[2].id, 'item-after-b');
-    assert.equal(after[2].label, 'Item After B');
-  });
+    })
+    assert.equal(before.length, 3)
+    assert.equal(after.length, 4)
+    assert.equal(after[2].id, 'item-after-b')
+    assert.equal(after[2].label, 'Item After B')
+  })
 
   it('can prepend', () => {
     const after = menu.performModification(before, {
       action: 'prepend',
       id: 'item-b',
       items: [{ id: 'item-before-b', label: 'Item Before B' }],
-    });
-    assert.equal(before.length, 3);
-    assert.equal(after.length, 4);
-    assert.equal(after[1].id, 'item-before-b');
-    assert.equal(after[1].label, 'Item Before B');
-    assert.equal(after[2].id, 'item-b');
-    assert.equal(after[2].label, 'Item B');
-  });
+    })
+    assert.equal(before.length, 3)
+    assert.equal(after.length, 4)
+    assert.equal(after[1].id, 'item-before-b')
+    assert.equal(after[1].label, 'Item Before B')
+    assert.equal(after[2].id, 'item-b')
+    assert.equal(after[2].label, 'Item B')
+  })
 
   it('can perform multiple modifications in submenus', () => {
     const after = menu.performModifications(before, [
@@ -105,10 +105,10 @@ describe('menu utilities', () => {
           },
         ],
       },
-    ]);
-    assert.equal(before.length, 3);
-    const itemC = after[2];
-    assert.equal(itemC.id, 'item-c');
+    ])
+    assert.equal(before.length, 3)
+    const itemC = after[2]
+    assert.equal(itemC.id, 'item-c')
     assert.deepStrictEqual(itemC.submenu, [
       { id: 'item-c-1', label: 'Item C 1' },
       { id: 'item-before-c-2', label: 'Item Before C 2' },
@@ -116,6 +116,6 @@ describe('menu utilities', () => {
       { id: 'item-after-c-2-A-replaced', label: 'Item After C 2 A Replaced' },
       { id: 'item-after-c-2-B', label: 'Item After C 2 B' },
       { id: 'item-c-3', label: 'Item C 3' },
-    ]);
-  });
-});
+    ])
+  })
+})

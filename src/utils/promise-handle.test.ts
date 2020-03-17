@@ -16,38 +16,38 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-import assert from 'assert';
+import assert from 'assert'
 
-import { createPromiseHandle } from './promise-handle';
+import { createPromiseHandle } from './promise-handle'
 
 describe('promise handle', () => {
   it('can create a handle', () => {
-    const handle = createPromiseHandle();
-    assert.equal(typeof handle.resolve, 'function');
-    assert.equal(typeof handle.reject, 'function');
-    assert.equal(typeof handle.promise, 'object');
-    assert(handle.promise instanceof Promise);
-  });
+    const handle = createPromiseHandle()
+    assert.equal(typeof handle.resolve, 'function')
+    assert.equal(typeof handle.reject, 'function')
+    assert.equal(typeof handle.promise, 'object')
+    assert(handle.promise instanceof Promise)
+  })
 
   it('can resolve the promise', done => {
-    const handle = createPromiseHandle();
+    const handle = createPromiseHandle()
     handle.promise.then(result => {
-      assert.equal(result, 'w00t');
-      done();
-    });
+      assert.equal(result, 'w00t')
+      done()
+    })
     process.nextTick(() => {
-      handle.resolve('w00t');
-    });
-  });
+      handle.resolve('w00t')
+    })
+  })
 
   it('can reject the promise', done => {
-    const handle = createPromiseHandle();
+    const handle = createPromiseHandle()
     handle.promise.catch(result => {
-      assert.equal(result, 'w00t');
-      done();
-    });
+      assert.equal(result, 'w00t')
+      done()
+    })
     process.nextTick(() => {
-      handle.reject('w00t');
-    });
-  });
-});
+      handle.reject('w00t')
+    })
+  })
+})

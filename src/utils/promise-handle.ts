@@ -19,16 +19,16 @@
 // This utility can be used to create a promise and externalize the resolve and reject methods to the caller
 
 export interface IPromiseHandle<T> {
-  promise: Promise<T>;
-  resolve: (result: T) => void;
-  reject: (reason: any) => void;
+  promise: Promise<T>
+  resolve: (result: T) => void
+  reject: (reason: any) => void
 }
 
 export const createPromiseHandle = <T extends any>() => {
-  const handle: Partial<IPromiseHandle<T>> = {};
+  const handle: Partial<IPromiseHandle<T>> = {}
   handle.promise = new Promise<T>((resolve, reject) => {
-    handle.resolve = resolve;
-    handle.reject = reject;
-  });
-  return handle as IPromiseHandle<T>;
-};
+    handle.resolve = resolve
+    handle.reject = reject
+  })
+  return handle as IPromiseHandle<T>
+}

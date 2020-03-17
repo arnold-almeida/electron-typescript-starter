@@ -16,14 +16,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-export * from './countdown';
-export * from './pretty-bytes';
-export * from './process-directories';
-export * from './promise-handle';
-export * from './range';
-export * from './timeout';
-export * from './wait';
+export * from './countdown'
+export * from './pretty-bytes'
+export * from './process-directories'
+export * from './promise-handle'
+export * from './range'
+export * from './timeout'
+export * from './wait'
 
-import * as menu from './menu';
-import * as realms from './realms';
-export { menu, realms };
+import * as menu from './menu'
+import * as realms from './realms'
+export { menu, realms }

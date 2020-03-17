@@ -16,12 +16,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-import qs from 'querystring';
+import qs from 'querystring'
 
-import {
-  IGreetingWindowProps,
-  WindowProps,
-} from './WindowProps';
+import { IGreetingWindowProps, WindowProps } from './WindowProps'
 
 export type WindowType = 'greeting'
 
@@ -29,24 +26,24 @@ export type WindowType = 'greeting'
  * A WindowOptions object contains the type of window and the props getting passed to its UI component
  */
 interface IWindowOptions {
-  type: WindowType;
-  props: WindowProps;
+  type: WindowType
+  props: WindowProps
 }
 
 export interface IGreetingWindowOptions extends IWindowOptions {
-  type: 'greeting';
-  props: IGreetingWindowProps;
+  type: 'greeting'
+  props: IGreetingWindowProps
 }
 
 export type WindowOptions = IGreetingWindowOptions
 
 export function getWindowOptions(): WindowOptions {
   // Strip away the "?" of the location.search
-  const queryString = location.search.substr(1);
-  const query = qs.parse(queryString);
+  const queryString = location.search.substr(1)
+  const query = qs.parse(queryString)
   if (query && typeof query.options === 'string') {
-    return JSON.parse(query.options);
+    return JSON.parse(query.options)
   } else {
-    throw new Error('Expected "options" in the query parameters');
+    throw new Error('Expected "options" in the query parameters')
   }
 }
