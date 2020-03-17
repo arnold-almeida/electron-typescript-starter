@@ -16,7 +16,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 
-import { IWindow } from './Window';
+import { IWindow } from './Window'
 
 // tslint:disable-next-line:no-empty-interface
 export interface IGreetingWindowProps {
@@ -25,7 +25,7 @@ export interface IGreetingWindowProps {
 
 export const GreetingWindow: IWindow = {
   getWindowOptions: () => ({
-    title: `Realm`,
+    title: `Loupe`,
     width: 1000,
     height: 400,
     resizable: true,
@@ -34,7 +34,7 @@ export const GreetingWindow: IWindow = {
   getComponent: () =>
     import('../components/Welcome').then(
       // TODO: Fix the props for this to include a type
-      m => m.Welcome as any,
+      m => m.Welcome as any
     ),
   getTrackedProperties: () => ({}),
-};
+}

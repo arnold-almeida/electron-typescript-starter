@@ -1,18 +1,18 @@
 {
-  "name": "realm-studio",
-  "productName": "Realm Studio",
+  "name": "loupe",
+  "productName": "Loupe",
   "version": "0.1.0",
-  "description": "A tool for everything Realm!",
+  "description": "The glue in your creative toolkit",
   "author": {
-    "name": "Realm Inc.",
-    "email": "info@realm.io",
+    "name": "Pixel Dreaming Pty Ltd",
+    "email": "info@pixeldreaming.com",
     "url": "https://realm.io"
   },
   "repository": "https://github.com/realm/realm-studio",
-  "license": "Apache-2.0",
+  "license": "Exclusive Copyright (for now)",
   "main": "./build/main.bundle.js",
   "build": {
-    "appId": "io.realm.realm-studio",
+    "appId": "io.getloupe.loupe",
     "directories": {
       "buildResources": "./resources"
     },
@@ -144,7 +144,6 @@
     "electron-store": "^2.0.0",
     "electron-updater": "4.0.6",
     "fs-extra": "^8.1.0",
-    "isomorphic-fetch": "^2.2.1",
     "moment": "^2.24.0",
     "node-sass": "4.13.1",
     "react": "^16.13.0",
