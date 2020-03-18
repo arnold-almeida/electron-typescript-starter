@@ -2,7 +2,7 @@
 
 // tslint:disable-next-line:interface-name
 interface Window {
-  ResizeObserver: ResizeObserver;
+  ResizeObserver: ResizeObserver
 }
 
 /**
@@ -23,18 +23,18 @@ declare class ResizeObserver {
   /**
    * Adds target to the list of observed elements.
    */
-  public observe: (target: Element) => void;
+  public observe: (target: Element) => void
 
   /**
    * Removes target from the list of observed elements.
    */
-  public unobserve: (target: Element) => void;
+  public unobserve: (target: Element) => void
 
   /**
    * Clears both the observationTargets and activeTargets lists.
    */
-  public disconnect: () => void;
-  public constructor(callback: ResizeObserverCallback);
+  public disconnect: () => void
+  public constructor(callback: ResizeObserverCallback)
 }
 
 /**
@@ -43,37 +43,37 @@ declare class ResizeObserver {
  */
 type ResizeObserverCallback = (
   entries: ResizeObserverEntry[],
-  observer: ResizeObserver,
-) => void;
+  observer: ResizeObserver
+) => void
 
 declare class ResizeObserverEntry {
   /**
    * The Element whose size has changed.
    */
-  public readonly target: Element;
+  public readonly target: Element
 
   /**
    * Element's content rect when ResizeObserverCallback is invoked.
    */
-  public readonly contentRect: DOMRectReadOnly;
+  public readonly contentRect: DOMRectReadOnly
   /**
    * @param target The Element whose size has changed.
    */
-  public constructor(target: Element);
+  public constructor(target: Element)
 }
 
 // tslint:disable-next-line:interface-name
 interface DOMRectReadOnly {
   // static fromRect(other: DOMRectInit | undefined): DOMRectReadOnly;
 
-  readonly x: number;
-  readonly y: number;
-  readonly width: number;
-  readonly height: number;
-  readonly top: number;
-  readonly right: number;
-  readonly bottom: number;
-  readonly left: number;
+  readonly x: number
+  readonly y: number
+  readonly width: number
+  readonly height: number
+  readonly top: number
+  readonly right: number
+  readonly bottom: number
+  readonly left: number
 
-  toJSON: () => any;
+  toJSON: () => any
 }

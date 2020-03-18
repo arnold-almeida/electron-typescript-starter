@@ -27,8 +27,10 @@ const isDevelopment = process.env.NODE_ENV === 'development'
 
 function getRendererHtmlPath() {
   const indexPath = isDevelopment
-    ? require('../../static/index.development.html')
-    : require('../../static/index.html')
+    ? // tslint:disable-next-line:no-var-requires no-require-imports
+      require('../../static/index.development.html')
+    : // tslint:disable-next-line:no-var-requires no-require-imports
+      require('../../static/index.html')
   // __dirname is the directory of the bundle
   return path.resolve(__dirname, indexPath)
 }
