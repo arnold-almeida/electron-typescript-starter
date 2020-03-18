@@ -178,7 +178,7 @@ export const getDefaultMenuTemplate = (
         { role: 'services', submenu: [] },
         { type: 'separator' },
         { role: 'hide' },
-        { role: 'hideothers' },
+        { role: 'hideOthers' },
         { role: 'unhide' },
         { type: 'separator' },
         { role: 'quit' },
