@@ -30,3 +30,8 @@ yarn package
 Context Providers for Realm
 
 - <https://github.com/realm/react-realm-context>
+
+## Redux Devtools
+
+Manually enable `file://` urls for redux devtools to work
+https://github.com/zalmoxisus/redux-devtools-extension/blob/master/docs/Troubleshooting.md

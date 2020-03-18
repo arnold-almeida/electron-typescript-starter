@@ -20,22 +20,22 @@ if (isDevelopment) {
   // be used in a block like this.
   // tslint:disable-next-line:no-var-requires no-require-imports
   require('source-map-support').install()
+
+  const {
+    default: installExtension,
+    REACT_DEVELOPER_TOOLS,
+    REDUX_DEVTOOLS,
+    // tslint:disable-next-line:no-var-requires no-require-imports
+  } = require('electron-devtools-installer')
+
+  installExtension(REACT_DEVELOPER_TOOLS)
+    .then((name: string) => console.log(`Added Extension:  ${name}`))
+    .catch((err: string) => console.log('An error occurred: ', err))
+
+  installExtension(REDUX_DEVTOOLS)
+    .then((name: string) => console.log(`Added Extension:  ${name}`))
+    .catch((err: string) => console.log('An error occurred: ', err))
 }
-
-const {
-  default: installExtension,
-  REACT_DEVELOPER_TOOLS,
-  REDUX_DEVTOOLS,
-  // tslint:disable-next-line:no-var-requires no-require-imports
-} = require('electron-devtools-installer')
-
-installExtension(REACT_DEVELOPER_TOOLS)
-  .then((name: string) => console.log(`Added Extension:  ${name}`))
-  .catch((err: string) => console.log('An error occurred: ', err))
-
-installExtension(REDUX_DEVTOOLS)
-  .then((name: string) => console.log(`Added Extension:  ${name}`))
-  .catch((err: string) => console.log('An error occurred: ', err))
 
 Application.sharedApplication.run()
 
