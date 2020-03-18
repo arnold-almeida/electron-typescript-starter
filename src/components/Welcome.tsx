@@ -28,7 +28,8 @@ export class Welcome extends React.Component<Props, State> {
   }
 
   public componentDidMount() {
-    electron.ipcRenderer.on('update-status', this.updateStatusChanged)
+    const log = () => this.updateStatusChanged('in componentDidMount')
+    electron.ipcRenderer.on('update-status', log)
 
     // Require realm and check update state with the sync support
     // Using nextTick to prevent blocking when loading realm
@@ -43,14 +44,12 @@ export class Welcome extends React.Component<Props, State> {
   }
 
   public componentWillUnmount() {
-    electron.ipcRenderer.removeListener(
-      'update-status',
-      this.updateStatusChanged
-    )
+    const log = () => this.updateStatusChanged('in componentDidMount')
+    electron.ipcRenderer.removeListener('update-status', log)
   }
 
-  public updateStatusChanged() {
-    console.log('updateStatusChanged()')
+  public updateStatusChanged(note: string = '') {
+    console.log(`updateStatusChanged() note: ${note}`)
   }
 
   public render() {
@@ -58,7 +57,7 @@ export class Welcome extends React.Component<Props, State> {
       <Router>
         <StoreProvider store={store}>
           <>
-            <p>Welcome to the jungle</p>
+            <p>Welcome to the jungle </p>
             <Button />
           </>
         </StoreProvider>

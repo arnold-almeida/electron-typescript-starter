@@ -150,9 +150,10 @@
     "react-realm-context": "^0.3.0",
     "react-router-dom": "5.1.2",
     "realm": "3.7.0-alpha.2",
-    "redux-devtools-extension": "2.13.8"
+    "redux-devtools-extension": "^2.13.8"
   },
   "devDependencies": {
+    "@types/electron-devtools-installer": "^2.2.0",
     "@types/electron-store": "^1.3.1",
     "@types/fs-extra": "^8.1.0",
     "@types/graphql": "^14.5.0",
@@ -171,6 +172,7 @@
     "devtron": "^1.4.0",
     "electron": "7",
     "electron-builder": "^22.3.2",
+    "electron-devtools-installer": "^2.2.4",
     "electron-download": "^4.1.1",
     "electron-publisher-s3": "^20.17.2",
     "faker": "^4.1.0",

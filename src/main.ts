@@ -22,6 +22,21 @@ if (isDevelopment) {
   require('source-map-support').install()
 }
 
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+  // tslint:disable-next-line:no-var-requires no-require-imports
+} = require('electron-devtools-installer')
+
+installExtension(REACT_DEVELOPER_TOOLS)
+  .then((name: string) => console.log(`Added Extension:  ${name}`))
+  .catch((err: string) => console.log('An error occurred: ', err))
+
+installExtension(REDUX_DEVTOOLS)
+  .then((name: string) => console.log(`Added Extension:  ${name}`))
+  .catch((err: string) => console.log('An error occurred: ', err))
+
 Application.sharedApplication.run()
 
 // Look for changes to application

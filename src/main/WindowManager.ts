@@ -143,7 +143,8 @@ export class WindowManager {
     }
 
     // Open up the dev tools, if not in production mode
-    if (process.env.REALM_STUDIO_DEV_TOOLS) {
+    // if (process.env.REALM_STUDIO_DEV_TOOLS) {
+    if (isDevelopment) {
       window.webContents.once('did-finish-load', () => {
         window.webContents.openDevTools({
           mode: 'detach',
